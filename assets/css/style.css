@@ -1,0 +1,18 @@
+.character-tile {
+    float: left;
+    height: 100px;
+    width: 150px;
+    background: white;
+    border: 1px solid grey;
+}
+
+img {
+    height: 70px;
+    width: 110px;
+}
+
+.clearfix-before::before {
+    content: "";
+    clear: both;
+    display: block;
+}
