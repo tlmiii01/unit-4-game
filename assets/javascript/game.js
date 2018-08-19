@@ -10,9 +10,11 @@ class Character {
     }
 }
 
+var isPlayerSelected = false;
+
 function buildCharacterTile(character) {
-    var newCharacter = $("<div>");
-    newCharacter.addClass("character-tile");
+    var newCharacter = $("<button>");
+    newCharacter.addClass("tile");
 
     // Adding stuff to tile
     var tempElement = $("<div>");
@@ -23,8 +25,8 @@ function buildCharacterTile(character) {
     newCharacter.append(tempElement);
 
     tempElement = $("<div>");
-    tempElement.add
     tempElement.text(character.healthPts);
+    newCharacter.append(tempElement);
     
     $(".character-list").append(newCharacter);
 }
@@ -32,13 +34,31 @@ function buildCharacterTile(character) {
 $(document).ready(function() {
 
     // Create a new character
-    var Vader = new Character("Darth Vader", "./assets/images/Vader-1.jpg" , 100, 25, 10);
-    console.log(Vader.name);
-    console.log(Vader.healthPts);
-    console.log(Vader.attackPts);
-    console.log(Vader.counterAttackPts);
+    var Vader = new Character("Darth Vader", "./assets/images/Vader-1.jpg", "vader", 100, 25, 10);
+    var yoda = new Character("Yoda", "./assets/images/yoda-1.jpg", "yoda", 50, 10, 20);
+    
+    // $(".tile").on("click", function() {
+    //     // If player isn't selected, move the clicked charcter to myCharacter
+    //     console.log("Got inside character-tile click handler");
+    //     if (!isPlayerSelected) {
+    //         var myCharacter = $(this).detach();
+    //         $("#my-character").append(myCharacter);
+    //         isPlayerSelected = true;
+    //     } 
+    // });
+
+    $(".tile").on("click", function() {
+        console.log("Hi");
+    })
+
+    $("#attack-button").on("click", function() {
+        console.log("Attack clicked!");
+    })
+
+    
 
     buildCharacterTile(Vader);
+    buildCharacterTile(yoda);
     
 
 }); 
