@@ -13,9 +13,14 @@ class Character {
 var isPlayerSelected = false;
 var isEnemySelected = false;
 
+// Charater during gameplay
+var myCharacter = null;
+var myEnemy = null;
+
 function buildCharacterTile(character) {
     var newCharacter = $("<button>");
     newCharacter.addClass("tile");
+    newCharacter.attr("id", character.charID);
 
     // Adding stuff to tile
     var tempElement = $("<div>");
@@ -47,9 +52,13 @@ $(document).ready(function() {
     $(".character-list>.tile").on("click", function() {
         // If player isn't selected, move the clicked charcter to myCharacter
         if (!isPlayerSelected) {
-            var myCharacter = $(this).detach();
-            $("#my-character").append(myCharacter);
+            var myCharacterTile = $(this).detach();
+            $("#my-character").append(myCharacterTile);
             $(this).css("background", "blue");
+
+            // Add the associated character to the gameboard
+            var charIndex = $(this).attr('id');
+            myCharacter = characters[charIndex];
             
             // Move the rest of the buttons to the enemies list
             $(".character-list>.tile").detach().appendTo(".enemy-list");
@@ -59,15 +68,20 @@ $(document).ready(function() {
     });
 
     $(".enemy-list").on("click", ".tile", function() {
-        debugger;
         if (!isEnemySelected) {
             $(this).detach().appendTo(".defender");
+
+            // Add the associated character to the gameboard
+            var charIndex = $(this).attr('id');
+            myEnemy = characters[charIndex];
+
             isEnemySelected = true;
         }
     })
 
     $("#attack-button").on("click", function() {
-        console.log("Attack clicked!");
+        console.log("My character's name is: " + myCharacter.name);
+        console.log("My enemy's name is: " + myEnemy.name);
     })
 
     
