@@ -37,19 +37,18 @@ $(document).ready(function() {
     var Vader = new Character("Darth Vader", "./assets/images/Vader-1.jpg", "vader", 100, 25, 10);
     var yoda = new Character("Yoda", "./assets/images/yoda-1.jpg", "yoda", 50, 10, 20);
     
-    // $(".tile").on("click", function() {
-    //     // If player isn't selected, move the clicked charcter to myCharacter
-    //     console.log("Got inside character-tile click handler");
-    //     if (!isPlayerSelected) {
-    //         var myCharacter = $(this).detach();
-    //         $("#my-character").append(myCharacter);
-    //         isPlayerSelected = true;
-    //     } 
-    // });
-
+    buildCharacterTile(Vader);
+    buildCharacterTile(yoda);
+    
     $(".tile").on("click", function() {
-        console.log("Hi");
-    })
+        // If player isn't selected, move the clicked charcter to myCharacter
+        console.log("Got inside character-tile click handler");
+        if (!isPlayerSelected) {
+            var myCharacter = $(this).detach();
+            $("#my-character").append(myCharacter);
+            isPlayerSelected = true;
+        } 
+    });
 
     $("#attack-button").on("click", function() {
         console.log("Attack clicked!");
@@ -57,8 +56,6 @@ $(document).ready(function() {
 
     
 
-    buildCharacterTile(Vader);
-    buildCharacterTile(yoda);
     
 
 }); 
