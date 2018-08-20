@@ -8,6 +8,10 @@ class Character {
         this.attackPts = attackPts;
         this.counterAttackPts = counterAttackPts;
     }
+
+    attackEnemy() {
+        
+    }
 }
 
 var isPlayerSelected = false;
