@@ -19,12 +19,17 @@ var myCharacter = null;
 var myEnemy = null;
 
 // Array of character objects.
-var characters = [ new Character("Darth Vader", "./assets/images/Vader-1.jpg", 0, 125, 40, 20),
-                   new Character("Luke Skywalker", "./assets/images/luke-1.jpg", 1, 100, 60, 30),
-                   new Character("Boba Fett", "./assets/images/boba-1.jpg", 2, 80, 80, 40),
-                   new Character("Yoda", "./assets/images/yoda-1.jpg", 3, 200, 20, 10)];
+var characters = [];
 
-                   
+function resetCharacterArray() {
+    characters.length = 0;
+    characters.push(new Character("Darth Vader", "./assets/images/Vader-1.jpg", 0, 125, 20, 20));
+    characters.push(new Character("Luke Skywalker", "./assets/images/luke-1.jpg", 1, 100, 30, 30));
+    characters.push(new Character("Boba Fett", "./assets/images/boba-1.jpg", 2, 80, 40, 50));
+    characters.push(new Character("Yoda", "./assets/images/yoda-1.jpg", 3, 150, 10, 30));
+
+}
+
 function buildCharacterTile(character) {
     var newCharacter = $("<button>");
     newCharacter.addClass("tile");
@@ -95,6 +100,7 @@ function generateReset() {
 }
 
 function createCharacter() {
+    resetCharacterArray();
     // Create a new character
     for (let i = 0; i < characters.length; i++) {
         buildCharacterTile(characters[i]);
