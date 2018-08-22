@@ -55,10 +55,10 @@ function evaluateAttack() {
     
     // Check to see if the Enemy is dead
     if (myEnemy.healthPts <= 0) {
-        // console.log("Enemy is dead...");
         $("#status").append("<p>" + myEnemy.name + " was defeated! Pick another fighter! </p>");
         // Do stuff to kill the enemy
         $(".defender>.tile").fadeOut(1500);
+        $(".defender").empty();
         
         if ($(".enemy-list .tile").length > 0) {
             isEnemySelected = false;
@@ -108,6 +108,7 @@ $(document).ready(function() {
     $(".character-list").on("click", ".tile", function() {
         // If player isn't selected, move the clicked charcter to myCharacter
         if (!isPlayerSelected) {
+            $("#status").empty();
             var myCharacterTile = $(this).detach();
             $("#my-character").append(myCharacterTile);
             // $(this).css("background", "blue");
@@ -125,6 +126,7 @@ $(document).ready(function() {
 
     $(".enemy-list").on("click", ".tile", function() {
         if (!isEnemySelected) {
+            $("#status").empty();
             $(this).detach().appendTo(".defender");
 
             // Add the associated character to the gameboard
@@ -136,11 +138,10 @@ $(document).ready(function() {
     });
 
     $("#attack-button").on("click", function() {
-                
-        if ($("#my-character .tile").length === 0) {
+        if ($("#my-character .tile" ).length === 0) {
             $("#status").empty();
             $("#status").append("<p>Please select a character.</p>");
-        } else if ($(".defender .tile").length === 0) {
+        } else if ($(".defender>.tile").length === 0) {
             $("#status").empty();
             $("#status").append("<p>Please select an opponent.</p>");
         } else {
@@ -164,13 +165,9 @@ $(document).ready(function() {
         $("#my-character").empty();
         $(".enemy-list").empty();
         $("#status").empty();
+        $(".defender").empty();
 
         // Create the characters again
         createCharacter();
     });
-
-    
-
-    
-
 }); 
