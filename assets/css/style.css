@@ -10,7 +10,6 @@ body {
 
 .tile {
     background: white;
-   
 }
 
 img {
@@ -21,4 +20,9 @@ img {
 #status>p {
     font-weight: bold;
     font-size: 32px;
+}
+
+
+div {
+    font-size: 18px;
 }
